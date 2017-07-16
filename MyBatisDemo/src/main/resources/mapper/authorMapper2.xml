@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.AuthorMapper">
+    <resultMap id="baseResultMap" type="domain.Author">
+        <id property="author_id" column="author_id"/>
+        <result property="author_name" column="author_name"/>
+        <result property="author_age" column="author_age"/>
+        <association property="author_blog" javaType="domain.Blog">
+            <id property="blog_id" column="blog_id"/>
+            <result property="blog_name" column="blog_name"/>
+        </association>
+        <collection property="author_articles"  column="author_id" select="selectArticleByAuthor_id"/>
+    </resultMap>
+    <select id="selectArticleByAuthor_id" resultType="domain.Article">
+          select ar.id AS article_id,
+          ar.content AS  article_content,
+          ar.title AS  article_title
+          from article ar
+          where ar.author_id = #{author_id,jdbcType=INTEGER}
+    </select>
+    <select id="selectById" resultMap="baseResultMap">
+        SELECT
+        au.id AS author_id,
+        au.name AS author_name,
+        au.age AS  author_age,
+        bl.name AS blog_name,
+        bl.id AS blog_id
+        FROM  author au LEFT JOIN blog bl ON au.blog_id = bl.id
+         WHERE au.id=#{id,jdbcType=INTEGER}
+    </select>
+</mapper>

@@ -57,5 +57,29 @@
     delete from article
     where id = #{id,jdbcType=INTEGER}
   </delete>
+  <!--插入方法2017年7月16日22:42:32-->
+    <insert id="insert" parameterType="domain.Article">
+        INSERT  INTO article(title,content,author_id,blog_id)
+        VALUES (#{article_title},#{article_content},#{article_author.author_id},#{article_blog.blog_id})
+    </insert>
+    <!--更新方法-->
+   <update id="update" parameterType="domain.Article">
+       UPDATE  article
+       <set >
+           <if test="article_title != null" >
+               title = #{article_title},
+           </if>
+           <if test="article_content != null" >
+               content = #{article_content},
+           </if>
+           <if test="article_author != null" >
+               author_id = #{article_author.author_id},
+           </if>
+           <if test="article_blog!= null" >
+               blog_id  = #{article_blog.blog_id},
+           </if>
+       </set>
+       where id = #{article_id}
 
+   </update>
 </mapper>

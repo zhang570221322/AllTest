@@ -1,9 +1,7 @@
 package util;
 
 import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.apache.ibatis.session.*;
 
 
 import java.io.IOException;
@@ -27,7 +25,7 @@ public class MyBatisUtil {
          sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
      }
    public static SqlSession getsqlSession(){
-    return  sqlSessionFactory.openSession();
+    return  sqlSessionFactory.openSession(ExecutorType.REUSE);
    }
    public  static void colsesqlSession(SqlSession s){
        s.close();

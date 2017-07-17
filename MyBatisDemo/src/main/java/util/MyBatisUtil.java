@@ -25,7 +25,10 @@ public class MyBatisUtil {
          sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
      }
    public static SqlSession getsqlSession(){
-    return  sqlSessionFactory.openSession(ExecutorType.REUSE);
+       SqlSession session = sqlSessionFactory.openSession(ExecutorType.REUSE);
+       Configuration configuration = session.getConfiguration(); //反射得到configuration ,然后
+       configuration.setSafeResultHandlerEnabled(false); // 设置为false
+       return  session;
    }
    public  static void colsesqlSession(SqlSession s){
        s.close();

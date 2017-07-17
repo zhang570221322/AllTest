@@ -9,7 +9,7 @@
     title, content
   </sql>
   <!--返回单个对象-->
-  <select id="selectById" resultType="domain.Article" parameterType="java.lang.Integer" >
+  <select id="selectById" resultType="entity.Article" parameterType="java.lang.Integer" >
     select
     <include refid="Base_Column_List" />
     ,
@@ -18,7 +18,7 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
   <!--返回集合-->
-  <select id="selectAll" resultType="domain.Article" parameterType="java.lang.Integer" >
+  <select id="selectAll" resultType="entity.Article" parameterType="java.lang.Integer" >
     select
     <include refid="Base_Column_List" />
     ,

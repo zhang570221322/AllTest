@@ -2,19 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="dao.ArticleMapper">
 
-    <resultMap id="authorResult" type="domain.Author">
+    <resultMap id="authorResult" type="entity.Author">
     <id property="author_id" column="author_id"/>
     <result property="author_name" column="author_name"/>
     <result property="author_age" column="author_age"/>
     <association property="author_blog" column="author_id" select="selectBlog2"/>
     </resultMap>
-    <resultMap id="blogResult" type="domain.Blog">
+    <resultMap id="blogResult" type="entity.Blog">
     <id property="blog_id" column="blog_id"/>
     <result property="blog_name" column="blog_name"/>
     <association property="blog_author" column="blog_id" select="selectAuthor2"/>
     </resultMap>
 
-    <resultMap id="BaseResultMap" type="domain.Article">
+    <resultMap id="BaseResultMap" type="entity.Article">
         <id property="article_id" column="article_id"/>
         <result property="article_content" column="article_content"/>
         <result property="article_title" column="article_title"/>

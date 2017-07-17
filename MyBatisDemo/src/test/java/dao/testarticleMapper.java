@@ -1,8 +1,8 @@
 package dao;
 
-import domain.Article;
-import domain.Author;
-import domain.Blog;
+import entity.Article;
+import entity.Author;
+import entity.Blog;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.After;
 import org.junit.Before;
@@ -72,6 +72,7 @@ public class testarticleMapper {
     @Test
     public void test5Update() {
         ArticleMapper articleMapper = session.getMapper(ArticleMapper.class);
+
         Article article = articleMapper.selectById(1);
         article.setArticle_content("测试更新content");
         articleMapper.update(article);

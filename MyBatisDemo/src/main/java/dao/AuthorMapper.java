@@ -1,7 +1,7 @@
 package dao;
 
 
-import domain.Author;
+import entity.Author;
 
 public interface AuthorMapper extends BaseMapper<Author> {
 

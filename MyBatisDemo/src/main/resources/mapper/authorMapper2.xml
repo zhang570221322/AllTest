@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="dao.AuthorMapper">
-    <resultMap id="baseResultMap" type="domain.Author">
+    <resultMap id="baseResultMap" type="entity.Author">
         <id property="author_id" column="author_id"/>
         <result property="author_name" column="author_name"/>
         <result property="author_age" column="author_age"/>
-        <association property="author_blog" javaType="domain.Blog">
+        <association property="author_blog" javaType="entity.Blog">
             <id property="blog_id" column="blog_id"/>
             <result property="blog_name" column="blog_name"/>
         </association>
         <collection property="author_articles"  column="author_id" select="selectArticleByAuthor_id"/>
     </resultMap>
-    <select id="selectArticleByAuthor_id" resultType="domain.Article">
+    <select id="selectArticleByAuthor_id" resultType="entity.Article">
           select ar.id AS article_id,
           ar.content AS  article_content,
           ar.title AS  article_title

@@ -1,6 +1,6 @@
 package dao;
 
-import domain.Article;
+import entity.Article;
 
 public interface ArticleMapper extends BaseMapper<Article> {
 

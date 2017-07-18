@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.ArticleMapper">
+
+
+    <resultMap id="blogResult" type="entity.Blog">
+        <id property="blog_id" column="blog_id"/>
+        <result property="blog_name" column="blog_name"/>
+    </resultMap>
+
+    <resultMap id="BaseResultMap" type="entity.Article">
+        <id property="article_id" column="article_id"/>
+        <result property="article_content" column="article_content"/>
+        <result property="article_title" column="article_title"/>
+        <association property="article_author" javaType="entity.Author">
+            <id property="author_id" column="author_id"/>
+            <result property="author_name" column="author_name"/>
+            <result property="author_age" column="author_age"/>
+        </association>
+        <association property="article_blog"  resultMap="blogResult"/>
+    </resultMap>
+
+    <!--返回单个对象-->
+
+    <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select ar.id AS article_id,
+          ar.content AS  article_content,
+          ar.title AS  article_title,
+         au.id AS author_id  ,
+         au.age AS  author_age,
+         au.name AS  author_name,
+         bl.id AS  blog_id,
+         bl.name AS  blog_name
+    from article ar LEFT  JOIN author au ON ar.author_id = au.id
+     LEFT JOIN  blog bl ON ar.blog_id = bl.id
+    where ar.id = #{id,jdbcType=INTEGER}
+  </select>
+    <!--返回集合-->
+    <select id="selectAll"  resultMap="BaseResultMap" parameterType="java.lang.Integer">
+     select ar.id AS article_id,
+          ar.content AS  article_content,
+          ar.title AS  article_title,
+         au.id AS author_id  ,
+         au.age AS  author_age,
+         au.name AS  author_name,
+         bl.id AS  blog_id,
+         bl.name AS  blog_name
+    from article ar LEFT  JOIN author au ON ar.author_id = au.id
+     LEFT JOIN  blog bl ON ar.blog_id = bl.id
+  </select>
+    <delete id="deleteById" parameterType="java.lang.Integer">
+    delete from article
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <!--插入方法2017年7月16日22:42:32-->
+    <insert id="insert" parameterType="entity.Article">
+        INSERT  INTO article(title,content,author_id,blog_id)
+        VALUES (#{article_title},#{article_content},#{article_author.author_id},#{article_blog.blog_id})
+    </insert>
+    <!--更新方法-->
+   <update id="update" parameterType="entity.Article">
+       UPDATE  article
+       <set >
+           <if test="article_title != null" >
+               title = #{article_title},
+           </if>
+           <if test="article_content != null" >
+               content = #{article_content},
+           </if>
+           <if test="article_author != null" >
+               author_id = #{article_author.author_id},
+           </if>
+           <if test="article_blog!= null" >
+               blog_id  = #{article_blog.blog_id},
+           </if>
+       </set>
+       where id = #{article_id}
+
+   </update>
+</mapper>

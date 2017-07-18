@@ -6,12 +6,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="log4jDEMO" />
         <module name="MyBatisDemo" />
+        <module name="MybatisSpringDemo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="AllTest" target="1.8" />
+      <module name="log4jDEMO" target="1.8" />
       <module name="MyBatisDemo" target="1.8" />
+      <module name="MybatisSpringDemo" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

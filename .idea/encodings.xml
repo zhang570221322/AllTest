@@ -3,5 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/MyBatisDemo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MybatisSpringDemo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/log4jDEMO" charset="UTF-8" />
   </component>
 </project>

@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AllTest.iml" filepath="$PROJECT_DIR$/AllTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/MyBatisDemo/MyBatisDemo.iml" filepath="$PROJECT_DIR$/MyBatisDemo/MyBatisDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MybatisSpringDemo/MybatisSpringDemo.iml" filepath="$PROJECT_DIR$/MybatisSpringDemo/MybatisSpringDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/log4jDEMO/log4jDEMO.iml" filepath="$PROJECT_DIR$/log4jDEMO/log4jDEMO.iml" />
     </modules>
   </component>
 </project>

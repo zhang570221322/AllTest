@@ -59,7 +59,6 @@ public class SqlSessionMethodTest {
     public void testSelectListHandler() {
         resultHandlerArticle resultHandler = new resultHandlerArticle();
         session.select("dao.ArticleMapper.selectAll", null,resultHandler);
-
     }
 
     @Test

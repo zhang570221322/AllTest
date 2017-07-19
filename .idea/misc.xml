@@ -9,6 +9,7 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/MyBatis/pom.xml" />
+        <option value="$PROJECT_DIR$/log4jDEMO/pom.xml" />
       </set>
     </option>
   </component>

@@ -12,6 +12,8 @@
         <module>MyBatisDemo</module>
         <module>log4jDEMO</module>
         <module>MybatisSpringDemo</module>
+        <module>SpingMybatisServiceDemo</module>
+        <module>AilibabaRequirementDemo</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

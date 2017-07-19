@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AilibabaRequirementDemo/AilibabaRequirementDemo.iml" filepath="$PROJECT_DIR$/AilibabaRequirementDemo/AilibabaRequirementDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/AllTest.iml" filepath="$PROJECT_DIR$/AllTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/MyBatisDemo/MyBatisDemo.iml" filepath="$PROJECT_DIR$/MyBatisDemo/MyBatisDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/MybatisSpringDemo/MybatisSpringDemo.iml" filepath="$PROJECT_DIR$/MybatisSpringDemo/MybatisSpringDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/log4jDEMO/log4jDEMO.iml" filepath="$PROJECT_DIR$/log4jDEMO/log4jDEMO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpingMybatisServiceDemo/SpingMybatisServiceDemo.iml" filepath="$PROJECT_DIR$/SpingMybatisServiceDemo/SpingMybatisServiceDemo.iml" />
     </modules>
   </component>
 </project>

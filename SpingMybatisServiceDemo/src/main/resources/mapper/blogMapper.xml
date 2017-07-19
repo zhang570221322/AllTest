@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.BlogMapper" >
+    <resultMap id="baseResultMap" type="entity.Blog">
+        <id column="blogId" property="blogId"/>
+        <result column="blogName" property="blogName"/>
+        <association property="blogAuthor" javaType="entity.Author" >
+            <id property="authorId" column="authorId"/>
+            <result property="authorName" column="authorName"/>
+            <result property="authorAge" column="authorAge"/>
+        </association>
+        <collection property="blogArticles" ofType="entity.Article">
+            <id property="articleId" column="articleId"/>
+            <result property="articleContent" column="articleContent"/>
+            <result property="articleTitle" column="articleTitle"/>
+        </collection>
+    </resultMap>
+
+    <!--插入方法2017年7月18日20:31:35-->
+    <insert id="insert" parameterType="entity.Article" keyProperty="blogId">
+        INSERT  INTO blog(name)
+        VALUES (#{blogName})
+    </insert>
+    <select id="getById" resultMap="baseResultMap">
+    SELECT ar.id AS articleId,
+          ar.content AS  articleContent,
+          ar.title AS  articleTitle,
+         au.id AS authorId  ,
+         au.age AS  authorAge,
+         au.name AS  authorName,
+         bl.id AS  blogId,
+         bl.name AS  blogName
+    FROM  blog bl LEFT JOIN author au ON bl.id = au.blog_id
+     LEFT  JOIN article ar ON bl.id = ar.blog_id
+    </select>
+
+    <select id="getAll" resultMap="baseResultMap">
+        SELECT ar.id AS articleId,
+        ar.content AS  articleContent,
+        ar.title AS  articleTitle,
+        au.id AS authorId  ,
+        au.age AS  authorAge,
+        au.name AS  authorName,
+        bl.id AS  blogId,
+        bl.name AS  blogName
+        FROM  blog bl LEFT JOIN author au ON bl.id = au.blog_id
+        LEFT  JOIN article ar ON bl.id = ar.blog_id
+    </select>
+</mapper>

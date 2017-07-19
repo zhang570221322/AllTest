@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.AuthorMapper">
+    <resultMap id="baseResultMap" type="entity.Author">
+        <id property="authorId" column="authorId"/>
+        <result property="authorName" column="authorName"/>
+        <result property="authorAge" column="authorAge"/>
+        <association property="authorBlog" javaType="entity.Blog">
+            <id property="blogId" column="blogId"/>
+            <result property="blogName" column="blogName"/>
+        </association>
+        <collection property="authorArticles"  ofType="entity.Article">
+            <id property="articleId" column="articleId"/>
+            <result property="articleContent" column="articleContent"/>
+            <result property="articleTitle" column="articleTitle"/>
+        </collection>
+    </resultMap>
+
+    <select id="getById" resultMap="baseResultMap">
+        SELECT
+        au.id AS authorId,
+        au.name AS authorName,
+        au.age AS  authorAge,
+        bl.name AS blogName,
+        bl.id AS blogId,
+        ar.id AS articleId,
+        ar.content AS  articleContent,
+        ar.title AS  articleTitle
+        FROM  author au LEFT JOIN blog bl ON au.blog_id = bl.id
+    LEFT  JOIN  article ar ON au.id = ar.author_id
+    WHERE au.id=#{id,jdbcType=INTEGER}
+</select>
+    <!--插入方法2017年7月16日22:42:32-->
+    <insert id="insert" parameterType="entity.Article" keyProperty="authorId">
+        INSERT  INTO author(name,age,blogId)
+        VALUES (#{authorName},#{authorAge},#{authorBlog.blogId})
+    </insert>
+</mapper>

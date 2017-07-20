@@ -32,7 +32,7 @@
 </select>
     <!--插入方法2017年7月16日22:42:32-->
     <insert id="insert" parameterType="entity.Article" keyProperty="authorId">
-        INSERT  INTO author(name,age,blogId)
-        VALUES (#{authorName},#{authorAge},#{authorBlog.blogId})
+        INSERT  INTO author(name,age,blog_id,gmt_modified)
+        VALUES (#{authorName},#{authorAge},#{authorBlog.blogId},now())
     </insert>
 </mapper>

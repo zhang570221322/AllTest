@@ -54,9 +54,9 @@
   </delete>
     <!--插入方法2017年7月16日22:42:32-->
     <insert id="insert" parameterType="entity.Article">
-        INSERT  INTO article(title,content,authorId,blogId)
-        VALUES (#{articleTitle},#{articleContent},#{articleAuthor.authorId},#{articleBlog.blogId})
-</insert>
+        INSERT  INTO article(title,content,author_id,blog_id,gmt_modified)
+        VALUES (#{articleTitle},#{articleContent},#{articleAuthor.authorId},#{articleBlog.blogId},now())
+   </insert>
     <!--更新方法-->
     <update id="update" parameterType="entity.Article" keyProperty="articleId">
         UPDATE article
@@ -68,12 +68,16 @@
                 content = #{articleContent},
             </if>
             <if test="articleAuthor != null">
-                authorId = #{articleAuthor.authorId},
+                author_id = #{articleAuthor.authorId},
             </if>
             <if test="articleBlog!= null">
-                blogId = #{articleBlog.blogId},
+                blog_id = #{articleBlog.blogId},
+            </if>
+            <if test="1== 1">
+                gmt_modified = now(),
             </if>
         </set>
+
         where id = #{articleId}
     </update>
     <!--根据对象的其他属性得到id,2017年7月18日20:56:03-->

@@ -25,7 +25,7 @@ CREATE TABLE `article` (
   `title` text,
   `content` text,
   `gmt_modified` datetime NOT NULL,
-  `gmt_create` datetime NOT NULL,
+  `gmt_create` datetime  DEFAULT '2017-07-16 13:39:53'  ,
   `blog_id` bigint(11) DEFAULT NULL,
   `author_id` bigint(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -48,7 +48,7 @@ CREATE TABLE `author` (
   `name` text,
   `age` tinyint(11) DEFAULT NULL,
   `gmt_modified` datetime NOT NULL,
-  `gmt_create` datetime NOT NULL,
+  `gmt_create` datetime  DEFAULT '2017-07-16 13:39:53',
   `blog_id` bigint(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_author_blog` (`blog_id`),
@@ -67,8 +67,8 @@ CREATE TABLE `blog` (
   `id` bigint(11) NOT NULL AUTO_INCREMENT,
   `name` text,
   `gmt_modified` datetime NOT NULL,
-  `gmt_create` datetime NOT NULL,
+  `gmt_create` datetime  DEFAULT '2017-07-16 13:39:53',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 

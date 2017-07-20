@@ -18,8 +18,8 @@
 
     <!--插入方法2017年7月18日20:31:35-->
     <insert id="insert" parameterType="entity.Article" keyProperty="blogId">
-        INSERT  INTO blog(name)
-        VALUES (#{blogName})
+        INSERT  INTO blog(name,gmt_modified)
+        VALUES (#{blogName},now())
     </insert>
     <select id="getById" resultMap="baseResultMap">
     SELECT ar.id AS articleId,

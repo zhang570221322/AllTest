@@ -56,13 +56,15 @@ public class ArticleMapperTest {
 
     @Test
     public void test4Insert() {
-        Article article = articleMapper.getById(1);
+        Article article =  new Article();
+        article.setArticleContent("test");
+        article.setArticleTitle("test");
         articleMapper.insert(article);
     }
 
     @Test
     public void test5Update() {
-        Article article = articleMapper.getById(1);
+        Article article = articleMapper.getById(2);
         article.setArticleContent("测试更新content");
         articleMapper.update(article);
     }

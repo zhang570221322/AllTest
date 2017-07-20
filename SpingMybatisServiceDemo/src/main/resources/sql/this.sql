@@ -24,6 +24,8 @@ CREATE TABLE `article` (
   `id` bigint(11) NOT NULL AUTO_INCREMENT,
   `title` text,
   `content` text,
+  `gmt_modified` datetime NOT NULL,
+  `gmt_create` datetime NOT NULL,
   `blog_id` bigint(11) DEFAULT NULL,
   `author_id` bigint(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -45,6 +47,8 @@ CREATE TABLE `author` (
   `id` bigint(11) NOT NULL AUTO_INCREMENT,
   `name` text,
   `age` tinyint(11) DEFAULT NULL,
+  `gmt_modified` datetime NOT NULL,
+  `gmt_create` datetime NOT NULL,
   `blog_id` bigint(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_author_blog` (`blog_id`),
@@ -62,10 +66,9 @@ DROP TABLE IF EXISTS `blog`;
 CREATE TABLE `blog` (
   `id` bigint(11) NOT NULL AUTO_INCREMENT,
   `name` text,
+  `gmt_modified` datetime NOT NULL,
+  `gmt_create` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Records of blog
--- ----------------------------
-INSERT INTO `blog` VALUES ('1', 'bolg1');
+

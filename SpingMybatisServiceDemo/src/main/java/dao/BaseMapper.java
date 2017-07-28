@@ -11,5 +11,5 @@ public interface BaseMapper<T> {
      int update(T t);
      T get(T t);
      T getById(int id);
-     LinkedList<T> getAll();
+     LinkedList<T> listAll();
 }

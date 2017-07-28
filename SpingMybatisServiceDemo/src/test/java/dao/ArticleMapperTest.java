@@ -2,19 +2,13 @@ package dao;
 
 import entity.Article;
 import entity.Author;
-import entity.Blog;
-import org.apache.ibatis.session.ExecutorType;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.junit.After;
-import org.junit.Before;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import util.MyBatisUtil;
-import util.SpringBeanUtil;
+
 
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -39,7 +33,7 @@ public class ArticleMapperTest {
     //测试集合
     @Test
     public void test2() {
-        LinkedList<Article> articles = articleMapper.getAll();
+        LinkedList<Article> articles = articleMapper.listAll();
         for (Article article : articles) {
             System.out.println(article.getArticleId());
         }

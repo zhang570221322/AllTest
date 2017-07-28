@@ -36,7 +36,7 @@
     where ar.id = #{id,jdbcType=INTEGER}
   </select>
     <!--返回集合-->
-    <select id="getAll" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    <select id="listAll" resultMap="BaseResultMap" parameterType="java.lang.Integer">
      select ar.id AS articleId,
           ar.content AS  articleContent,
           ar.title AS  articleTitle,

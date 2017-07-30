@@ -27,7 +27,7 @@ public class ArticleMapperTest {
     @Test
     public void test1() {
         Article article = articleMapper.getById(1);
-        System.out.println(article.getArticleBlog().getBlogId());
+        System.out.println(article.getArticleId());
     }
 
     //测试集合

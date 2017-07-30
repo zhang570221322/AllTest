@@ -7,14 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="AilibabaRequirementDemo" />
+        <module name="MyBatisDemo" />
         <module name="MybatisSpringDemo" />
         <module name="SpingMybatisServiceDemo" />
-      </profile>
-      <profile name="Annotation profile for AllTest" enabled="true">
-        <sourceOutputDir name="../MybatisSpringDemo/target/generated-sources/annotations" />
-        <sourceTestOutputDir name="../MybatisSpringDemo/target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="MyBatisDemo" />
+        <module name="SrpingMybatisTransational" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -24,6 +20,8 @@
       <module name="MyBatisDemo" target="1.8" />
       <module name="MybatisSpringDemo" target="1.8" />
       <module name="SpingMybatisServiceDemo" target="1.8" />
+      <module name="SpringMybatisTransactional" target="1.8" />
+      <module name="SrpingMybatisTransational" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

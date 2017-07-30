@@ -13,7 +13,7 @@
         <!-- mybatis版本号 -->
         <mybatis.version>3.2.8</mybatis.version>
     </properties>
-    <artifactId>MyBatisDemo</artifactId>
+    <artifactId>SpringMybatisServiceDemo</artifactId>
 
     <dependencies>
         <!-- mybatis核心包 -->

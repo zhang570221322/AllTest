@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.ArticleMapper">
+
+    <resultMap id="authorResult" type="entity.Author">
+    <id property="author_id" column="author_id"/>
+    <result property="author_name" column="author_name"/>
+    <result property="author_age" column="author_age"/>
+    <association property="author_blog" column="author_id" select="selectBlog2"/>
+    </resultMap>
+    <resultMap id="blogResult" type="entity.Blog">
+    <id property="blog_id" column="blog_id"/>
+    <result property="blog_name" column="blog_name"/>
+    <association property="blog_author" column="blog_id" select="selectAuthor2"/>
+    </resultMap>
+
+    <resultMap id="BaseResultMap" type="entity.Article">
+        <id property="article_id" column="article_id"/>
+        <result property="article_content" column="article_content"/>
+        <result property="article_title" column="article_title"/>
+        <association property="article_author"  column="article_author_id"
+                     select="selectAuthor"/>
+        <association property="article_blog"  column="article_blog_id" select="selectBlog"/>
+    </resultMap>
+
+
+
+    <!--返回单个对象-->
+    <select id="selectById" resultMap="BaseResultMap" >
+    select ar.id AS article_id,
+          ar.content AS  article_content,
+          ar.title AS  article_title,
+           ar.author_id AS article_author_id ,
+           ar.blog_id AS article_blog_id
+    from article ar
+    where ar.id = #{id,jdbcType=INTEGER}
+  </select>
+    <select id="selectAuthor" resultMap="authorResult">
+        SELECT   au.id AS author_id  ,
+        au.age AS  author_age,
+        au.name AS  author_name
+        FROM author au
+        WHERE au.id= #{article_author_id,jdbcType=INTEGER}
+    </select>
+    <select id="selectBlog" resultMap="blogResult">
+        SELECT
+        bl.id AS  blog_id,
+        bl.name AS  blog_name
+        FROM blog bl
+        WHERE  bl.id=#{article_blog_id,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectAuthor2" resultMap="authorResult">
+        SELECT   au.id AS author_id  ,
+        au.age AS  author_age,
+        au.name AS  author_name
+        FROM author au
+        WHERE au.id= #{author_id,jdbcType=INTEGER}
+    </select>
+    <select id="selectBlog2" resultMap="blogResult">
+        SELECT
+        bl.id AS  blog_id,
+        bl.name AS  blog_name
+        FROM blog bl
+        WHERE  bl.id=#{blog_id,jdbcType=INTEGER}
+    </select>
+
+    <!--返回集合-->
+    <select id="selectAll" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+     select ar.id AS article_id,
+          ar.content AS  article_content,
+          ar.title AS  article_title,
+         au.id AS author_id  ,
+         au.age AS  author_age,
+         au.name AS  author_name,
+         bl.id AS  blog_id,
+         bl.name AS  blog_name
+    from article ar LEFT  JOIN author au ON ar.author_id = au.id
+     LEFT JOIN  blog bl ON ar.blog_id = bl.id
+  </select>
+    <delete id="deleteById" parameterType="java.lang.Integer">
+    delete from article
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+</mapper>

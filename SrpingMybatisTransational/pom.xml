@@ -10,10 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>SrpingMybatisTransational</artifactId>
-    <properties>
-        <!-- mybatis版本号 -->
-        <mybatis.version>3.2.8</mybatis.version>
-    </properties>
+
 
     <dependencies>
         <!-- mybatis核心包 -->

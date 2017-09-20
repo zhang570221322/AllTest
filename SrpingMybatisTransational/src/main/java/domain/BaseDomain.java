@@ -3,17 +3,18 @@ package domain;
 import dao.ArticleMapper;
 import dao.AuthorMapper;
 import dao.BlogMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.annotation.Resource;
 
 /**
  * Created by zwl on 2017/7/19.
  * May god bless me
  */
 public class BaseDomain {
-    @Autowired
+    @Resource
     protected ArticleMapper articleMapper;
-    @Autowired
+    @Resource
     protected AuthorMapper authorMapper;
-    @Autowired
+    @Resource
     protected BlogMapper blogMapper;
 }

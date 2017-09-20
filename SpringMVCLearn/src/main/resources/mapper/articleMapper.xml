@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.ArticleMapper">
+
+
+    <resultMap id="blogResult" type="entity.Blog">
+        <id property="blogId" column="blogId"/>
+        <result property="blogName" column="blogName"/>
+    </resultMap>
+
+    <resultMap id="BaseResultMap" type="entity.Article">
+        <id property="articleId" column="articleId"/>
+        <result property="articleContent" column="articleContent"/>
+        <result property="articleTitle" column="articleTitle"/>
+        <association property="articleAuthor" javaType="entity.Author">
+            <id property="authorId" column="authorId"/>
+            <result property="authorName" column="authorName"/>
+            <result property="authorAge" column="authorAge"/>
+        </association>
+        <association property="articleBlog" resultMap="blogResult"/>
+    </resultMap>
+
+    <!--返回单个对象-->
+
+    <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select ar.id AS articleId,
+          ar.content AS  articleContent,
+          ar.title AS  articleTitle,
+         au.id AS authorId  ,
+         au.age AS  authorAge,
+         au.name AS  authorName,
+         bl.id AS  blogId,
+         bl.name AS  blogName
+    from article ar LEFT  JOIN author au ON ar.author_id = au.id
+     LEFT JOIN  blog bl ON ar.blog_id = bl.id
+    where ar.id = #{id,jdbcType=INTEGER}
+  </select>
+    <!--返回集合-->
+    <select id="listAll" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+     select ar.id AS articleId,
+          ar.content AS  articleContent,
+          ar.title AS  articleTitle,
+         au.id AS authorId  ,
+         au.age AS  authorAge,
+         au.name AS  authorName,
+         bl.id AS  blogId,
+         bl.name AS  blogName
+    from article ar LEFT  JOIN author au ON ar.author_id = au.id
+     LEFT JOIN  blog bl ON ar.blog_id = bl.id
+  </select>
+    <delete id="deleteById" parameterType="java.lang.Integer">
+    delete from article
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <!--插入方法2017年7月16日22:42:32-->
+    <insert id="insert" parameterType="entity.Article">
+        INSERT  INTO article(title,content,author_id,blog_id,gmt_modified)
+        VALUES (#{articleTitle},#{articleContent},#{articleAuthor.authorId},#{articleBlog.blogId},now())
+   </insert>
+    <!--更新方法-->
+    <update id="update" parameterType="entity.Article" keyProperty="articleId">
+        UPDATE article
+        <set>
+            <if test="articleTitle != null">
+                title = #{articleTitle},
+            </if>
+            <if test="articleContent != null">
+                content = #{articleContent},
+            </if>
+            <if test="articleAuthor != null">
+                author_id = #{articleAuthor.authorId},
+            </if>
+            <if test="articleBlog!= null">
+                blog_id = #{articleBlog.blogId},
+            </if>
+            <if test="1== 1">
+                gmt_modified = now(),
+            </if>
+        </set>
+
+        where id = #{articleId}
+    </update>
+    <!--根据对象的其他属性得到id,2017年7月18日20:56:03-->
+
+</mapper>

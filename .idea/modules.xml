@@ -2,11 +2,17 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AcceptNews/AcceptNews.iml" filepath="$PROJECT_DIR$/AcceptNews/AcceptNews.iml" />
       <module fileurl="file://$PROJECT_DIR$/AilibabaRequirementDemo/AilibabaRequirementDemo.iml" filepath="$PROJECT_DIR$/AilibabaRequirementDemo/AilibabaRequirementDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/AllTest.iml" filepath="$PROJECT_DIR$/AllTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ForQIxiang/ForQIxiang.iml" filepath="$PROJECT_DIR$/ForQIxiang/ForQIxiang.iml" />
       <module fileurl="file://$PROJECT_DIR$/MyBatisDemo/MyBatisDemo.iml" filepath="$PROJECT_DIR$/MyBatisDemo/MyBatisDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/MybatisSpringDemo/MybatisSpringDemo.iml" filepath="$PROJECT_DIR$/MybatisSpringDemo/MybatisSpringDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Redis/Redis.iml" filepath="$PROJECT_DIR$/Redis/Redis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ShiroDemo/ShiroDemo.iml" filepath="$PROJECT_DIR$/ShiroDemo/ShiroDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/SpingMybatisServiceDemo/SpingMybatisServiceDemo.iml" filepath="$PROJECT_DIR$/SpingMybatisServiceDemo/SpingMybatisServiceDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpringMVCDemo/SpringMVCDemo.iml" filepath="$PROJECT_DIR$/SpringMVCDemo/SpringMVCDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpringMVCLearn/SpringMVCLearn.iml" filepath="$PROJECT_DIR$/SpringMVCLearn/SpringMVCLearn.iml" />
       <module fileurl="file://$PROJECT_DIR$/SrpingMybatisTransational/SrpingMybatisTransational.iml" filepath="$PROJECT_DIR$/SrpingMybatisTransational/SrpingMybatisTransational.iml" />
     </modules>
   </component>

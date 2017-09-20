@@ -27,6 +27,7 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
+    @Transactional
     public void saveBlogWithAuthorArticlesTwo(Author author , Blog blog , List<Article> articles) {
         blogDomian.insertBlogWithAuthorArticles(author,blog,articles);
         int a=1/0;

@@ -2,11 +2,16 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/AcceptNews" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/AilibabaRequirementDemo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ForQIxiang" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/MyBatisDemo" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/MybatisSpringDemo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Redis" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ShiroDemo" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/SpingMybatisServiceDemo" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/SpringMybatisTransactional" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SpringMVCDemo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SpringMVCLearn" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/SrpingMybatisTransational" charset="UTF-8" />
   </component>
 </project>

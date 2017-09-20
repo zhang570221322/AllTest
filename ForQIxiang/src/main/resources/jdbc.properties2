@@ -1,0 +1,5 @@
+jdbc.driverLocation=J://MAKER//jarFiles//connection//sqljdbc4.jar
+jdbc.driverClass=com.microsoft.sqlserver.jdbc.SQLServerDriver
+jdbc.connectionURL=jdbc:sqlserver://192.168.174.214:1433;databaseName=qixiang
+jdbc.userId=sa
+jdbc.password=123456

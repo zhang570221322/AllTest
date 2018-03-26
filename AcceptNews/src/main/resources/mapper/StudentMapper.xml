@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.StudentMapper" >
+  <resultMap id="BaseResultMap" type="model.Student" >
+    <constructor >
+      <idArg column="ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="model.Student" >
+    <constructor >
+      <idArg column="ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="BJBH" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="BJMC" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="CCH" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="CCMC" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="CCQJ" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="CSRQ" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="FDYH" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="JG" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="JTZZ" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="SFZH" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="SSNJ" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="XBMC" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="XH" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="XM" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="XSZT" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="XYBH" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="XYMC" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="XZ" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="YHKH" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="ZYBH" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="ZYMC" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID
+  </sql>
+  <sql id="Blob_Column_List" >
+    BJBH, BJMC, CCH, CCMC, CCQJ, CSRQ, FDYH, JG, JTZZ, SFZH, SSNJ, XBMC, XH, XM, XSZT, 
+    XYBH, XYMC, XZ, YHKH, ZYBH, ZYMC
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from student
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from student
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="model.Student" >
+    insert into student (ID, BJBH, BJMC, 
+      CCH, CCMC, CCQJ, 
+      CSRQ, FDYH, JG, 
+      JTZZ, SFZH, SSNJ, 
+      XBMC, XH, XM, 
+      XSZT, XYBH, XYMC, 
+      XZ, YHKH, ZYBH, 
+      ZYMC)
+    values (#{id,jdbcType=VARCHAR}, #{bjbh,jdbcType=LONGVARCHAR}, #{bjmc,jdbcType=LONGVARCHAR}, 
+      #{cch,jdbcType=LONGVARCHAR}, #{ccmc,jdbcType=LONGVARCHAR}, #{ccqj,jdbcType=LONGVARCHAR}, 
+      #{csrq,jdbcType=LONGVARCHAR}, #{fdyh,jdbcType=LONGVARCHAR}, #{jg,jdbcType=LONGVARCHAR}, 
+      #{jtzz,jdbcType=LONGVARCHAR}, #{sfzh,jdbcType=LONGVARCHAR}, #{ssnj,jdbcType=LONGVARCHAR}, 
+      #{xbmc,jdbcType=LONGVARCHAR}, #{xh,jdbcType=LONGVARCHAR}, #{xm,jdbcType=LONGVARCHAR}, 
+      #{xszt,jdbcType=LONGVARCHAR}, #{xybh,jdbcType=LONGVARCHAR}, #{xymc,jdbcType=LONGVARCHAR}, 
+      #{xz,jdbcType=LONGVARCHAR}, #{yhkh,jdbcType=LONGVARCHAR}, #{zybh,jdbcType=LONGVARCHAR}, 
+      #{zymc,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.Student" >
+    insert into student
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="bjbh != null" >
+        BJBH,
+      </if>
+      <if test="bjmc != null" >
+        BJMC,
+      </if>
+      <if test="cch != null" >
+        CCH,
+      </if>
+      <if test="ccmc != null" >
+        CCMC,
+      </if>
+      <if test="ccqj != null" >
+        CCQJ,
+      </if>
+      <if test="csrq != null" >
+        CSRQ,
+      </if>
+      <if test="fdyh != null" >
+        FDYH,
+      </if>
+      <if test="jg != null" >
+        JG,
+      </if>
+      <if test="jtzz != null" >
+        JTZZ,
+      </if>
+      <if test="sfzh != null" >
+        SFZH,
+      </if>
+      <if test="ssnj != null" >
+        SSNJ,
+      </if>
+      <if test="xbmc != null" >
+        XBMC,
+      </if>
+      <if test="xh != null" >
+        XH,
+      </if>
+      <if test="xm != null" >
+        XM,
+      </if>
+      <if test="xszt != null" >
+        XSZT,
+      </if>
+      <if test="xybh != null" >
+        XYBH,
+      </if>
+      <if test="xymc != null" >
+        XYMC,
+      </if>
+      <if test="xz != null" >
+        XZ,
+      </if>
+      <if test="yhkh != null" >
+        YHKH,
+      </if>
+      <if test="zybh != null" >
+        ZYBH,
+      </if>
+      <if test="zymc != null" >
+        ZYMC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="bjbh != null" >
+        #{bjbh,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bjmc != null" >
+        #{bjmc,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="cch != null" >
+        #{cch,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ccmc != null" >
+        #{ccmc,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ccqj != null" >
+        #{ccqj,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="csrq != null" >
+        #{csrq,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="fdyh != null" >
+        #{fdyh,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="jg != null" >
+        #{jg,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="jtzz != null" >
+        #{jtzz,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="sfzh != null" >
+        #{sfzh,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ssnj != null" >
+        #{ssnj,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="xbmc != null" >
+        #{xbmc,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="xh != null" >
+        #{xh,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="xm != null" >
+        #{xm,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="xszt != null" >
+        #{xszt,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="xybh != null" >
+        #{xybh,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="xymc != null" >
+        #{xymc,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="xz != null" >
+        #{xz,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="yhkh != null" >
+        #{yhkh,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="zybh != null" >
+        #{zybh,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="zymc != null" >
+        #{zymc,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.Student" >
+    update student
+    <set >
+      <if test="bjbh != null" >
+        BJBH = #{bjbh,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bjmc != null" >
+        BJMC = #{bjmc,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="cch != null" >
+        CCH = #{cch,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ccmc != null" >
+        CCMC = #{ccmc,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ccqj != null" >
+        CCQJ = #{ccqj,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="csrq != null" >
+        CSRQ = #{csrq,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="fdyh != null" >
+        FDYH = #{fdyh,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="jg != null" >
+        JG = #{jg,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="jtzz != null" >
+        JTZZ = #{jtzz,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="sfzh != null" >
+        SFZH = #{sfzh,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ssnj != null" >
+        SSNJ = #{ssnj,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="xbmc != null" >
+        XBMC = #{xbmc,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="xh != null" >
+        XH = #{xh,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="xm != null" >
+        XM = #{xm,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="xszt != null" >
+        XSZT = #{xszt,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="xybh != null" >
+        XYBH = #{xybh,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="xymc != null" >
+        XYMC = #{xymc,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="xz != null" >
+        XZ = #{xz,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="yhkh != null" >
+        YHKH = #{yhkh,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="zybh != null" >
+        ZYBH = #{zybh,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="zymc != null" >
+        ZYMC = #{zymc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="model.Student" >
+    update student
+    set BJBH = #{bjbh,jdbcType=LONGVARCHAR},
+      BJMC = #{bjmc,jdbcType=LONGVARCHAR},
+      CCH = #{cch,jdbcType=LONGVARCHAR},
+      CCMC = #{ccmc,jdbcType=LONGVARCHAR},
+      CCQJ = #{ccqj,jdbcType=LONGVARCHAR},
+      CSRQ = #{csrq,jdbcType=LONGVARCHAR},
+      FDYH = #{fdyh,jdbcType=LONGVARCHAR},
+      JG = #{jg,jdbcType=LONGVARCHAR},
+      JTZZ = #{jtzz,jdbcType=LONGVARCHAR},
+      SFZH = #{sfzh,jdbcType=LONGVARCHAR},
+      SSNJ = #{ssnj,jdbcType=LONGVARCHAR},
+      XBMC = #{xbmc,jdbcType=LONGVARCHAR},
+      XH = #{xh,jdbcType=LONGVARCHAR},
+      XM = #{xm,jdbcType=LONGVARCHAR},
+      XSZT = #{xszt,jdbcType=LONGVARCHAR},
+      XYBH = #{xybh,jdbcType=LONGVARCHAR},
+      XYMC = #{xymc,jdbcType=LONGVARCHAR},
+      XZ = #{xz,jdbcType=LONGVARCHAR},
+      YHKH = #{yhkh,jdbcType=LONGVARCHAR},
+      ZYBH = #{zybh,jdbcType=LONGVARCHAR},
+      ZYMC = #{zymc,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

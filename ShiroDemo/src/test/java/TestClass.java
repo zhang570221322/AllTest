@@ -1,13 +1,14 @@
-import model.User;
-import org.hibernate.Session;
+
 import org.hibernate.SessionFactory;
-import org.junit.Before;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import service.AccountService;
+
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ import java.util.List;
  * May god bless me
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:daobean-context.xml")
+@ContextConfiguration("classpath:root-context.xml")
 public class TestClass {
     @Autowired
     private SessionFactory sessionFactory;
@@ -26,10 +27,17 @@ public class TestClass {
 
     @Test
     public void test1(){
-        List<String> 用户1 = accountService.getPermissionsByUserName("用户1");
+        List<String> 用户1 = accountService.getPermissionsByUserName("admin");
         用户1.forEach(s -> {
             System.out.println(s);
         });
     }
 
+    @Test
+    public void testGerPermission() throws Exception {
+        List<String> permissionsByUserName = accountService.getPermissionsByUserName("admin");
+        permissionsByUserName.forEach(s -> {
+            System.out.println(s);
+        });
+    }
 }

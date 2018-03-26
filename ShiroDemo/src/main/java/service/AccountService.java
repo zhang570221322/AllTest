@@ -5,7 +5,6 @@ import model.Permission;
 import model.Role;
 import model.User;
 import model.UserRole;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -39,13 +38,13 @@ public class AccountService {
      * @return
      */
     public List<String> getPermissionsByUserName(String username) {
-        System.out.println("调用");
+
         User user = getUserByUserName(username);
         if (user == null) {
             return null;
         }
         List<String> list = new ArrayList<String>();
-        // System.out.println(user.getUserRoles().get(0).get);
+
         for (UserRole userRole : user.getUserRoles()) {
             Role role = userRole.getRole();
             List<Permission> permissions = baseDao.findAllByHQL("FROM Permission WHERE roleId = ?", new Object[] { role.getId() });

@@ -12,25 +12,9 @@
 	
 	<!-- databean config include -->
 	<import resource="daobean-context.xml"/>
-		<import resource="shiro-context.xml"/>
-	
-	
-	<!-- 解决json乱码 -->
-	<bean
-		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
-		<property name="messageConverters">
-			<list>
-				<bean
-					class="org.springframework.http.converter.StringHttpMessageConverter">
-					<property name="supportedMediaTypes">
-						<list>
-							<value>text/html;charset=UTF-8</value>
-						</list>
-					</property>
-				</bean>
-			</list>
-		</property>
-	</bean>
+		<!--<import resource="shiro-context.xml"/>-->
+
+
 
 
 </beans>

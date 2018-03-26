@@ -7,37 +7,74 @@
 				 http://www.springframework.org/schema/context/spring-context-3.2.xsd
 				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
 				 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
-
+ <!--核心Filter-->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager" />
 		<property name="loginUrl" value="/toLogin" />
 		<property name="successUrl" value="/home" />
 		<property name="unauthorizedUrl" value="/403.do" />
-		 
+
 		<property name="filterChainDefinitions">
 			<value>
-				/toLogin = authc <!-- authc 表示需要认证才能访问的页面 -->
-				/home = authc, perms[/home]  <!-- perms 表示需要该权限才能访问的页面 -->
+                /user = roles[user]
+                /admin = roles[admin]
+				/shiro/logout = logout
+		 		/toLogin = anon
+				/login =anon
+				/**= authc
 			</value>
+		</property>
+	</bean>
+
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+       <property name="authenticator" ref="Realms"></property>
+        <property name="realms">
+            <list>
+                <ref bean="myShiroRealm"></ref>
+                <!--<ref bean="SecondRealm"></ref>-->
+            </list>
+        </property>
+    </bean>
+
+<bean id="Realms" class="org.apache.shiro.authc.pam.ModularRealmAuthenticator">
+    <property name="authenticationStrategy">
+        <bean class="org.apache.shiro.authc.pam.AtLeastOneSuccessfulStrategy"></bean>
+    </property>
+</bean>
+
+	<bean id="myShiroRealm" class="shrio.MyShiroRealm">
+		<!-- businessManager 用来实现用户名密码的查询 -->
+		<property name="accountService" ref="accountService" />
+		<!-- 加密MD5 ，前台会加密传送来的表单-->
+		<property name="credentialsMatcher">
+			<bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+				<property name="hashAlgorithmName" value="MD5"/>  <!--加密算法-->
+				<property name="hashIterations" value="1024"/><!--加密次数-->
+				<property name="storedCredentialsHexEncoded" value="true"/>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="SecondRealm" class="shrio.SecondRealm">
+        <!-- businessManager 用来实现用户名密码的查询 -->
+        <property name="accountService" ref="accountService" />
+		<!-- 加密MD5 ，前台会加密传送来的表单-->
+		<property name="credentialsMatcher">
+			<bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+				<property name="hashAlgorithmName" value="SHA1"/>  <!--加密算法-->
+				<property name="hashIterations" value="1024"/><!--加密次数-->
+				<property name="storedCredentialsHexEncoded" value="true"/>
+
+			</bean>
 		</property>
 	</bean>
 
 
 
 
-	<bean id="myShiroRealm" class="shrio.MyShiroRealm">
-		<!-- businessManager 用来实现用户名密码的查询 -->
-		<property name="accountService" ref="accountService" />
-	</bean>
-
-	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-		<property name="realm" ref="myShiroRealm"></property>
-	</bean>
-
-
 
  <!--<bean id="shiroCacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">-->
-		<!--<property name="cacheManager" ref="cacheManager" /> </bean>-->
+		 <!--<property name="cacheManager" ref="cacheManager" /> </bean>-->
 
 
 </beans>

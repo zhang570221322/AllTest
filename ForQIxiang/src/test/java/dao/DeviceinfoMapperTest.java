@@ -7,7 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import util.MyBatisUtil;
+
 
 import java.util.Date;
 import java.util.List;

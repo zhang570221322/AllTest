@@ -18,6 +18,8 @@
 
 	<mvc:annotation-driven
 		content-negotiation-manager="contentNegotiationManager" />
+
+
 	<!-- 解决spring3.2 使用@ResponseBody返回值为json或者xml的错误 -->
 	<beans:bean id="contentNegotiationManager"
 		class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
@@ -56,5 +58,21 @@
 		<!--class="org.springframework.web.multipart.commons.CommonsMultipartResolver"-->
 		<!--p:defaultEncoding="UTF-8" p:maxUploadSize="999999999" p:uploadTempDir="upload/temp" />-->
 
+	<!-- 解决json乱码 -->
+	<bean
+			class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean
+						class="org.springframework.http.converter.StringHttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+							<value>text/html;charset=UTF-8</value>
+						</list>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
 
 </beans:beans>

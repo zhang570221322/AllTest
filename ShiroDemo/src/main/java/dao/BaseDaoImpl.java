@@ -31,7 +31,7 @@ public class BaseDaoImpl implements BaseDao {
 	public List findAllByHQL(String hql, Object[] args) {
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		for (int i = 0; i < args.length; i++) {
-			System.out.println(args[i]);
+
 			query.setParameter(i, args[i]);
 		}
 		return query.list();
@@ -49,9 +49,9 @@ public class BaseDaoImpl implements BaseDao {
 
 	public Object findObjectByHQL(String hql, Object[] args) {
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		System.out.println(args[0]);
+
 		for (int i = 0; i < args.length; i++) {
-			System.out.println(args[i]);
+
 			query.setParameter(i, args[i]);
 		}
 		List list = query.list();

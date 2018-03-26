@@ -1,32 +1,25 @@
 package shrio;
+
 import model.User;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
-import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
-import org.springframework.stereotype.Component;
 import service.AccountService;
-
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+
 /**
- * 自定义Realm
- * Created by zwl on 2017/9/20.
+ * Created by zwl on 2017/9/21.
  * May god bless me
  */
-@Component
-public class MyShiroRealm extends AuthorizingRealm {
-
+public class SecondRealm extends AuthorizingRealm {
     private AccountService accountService;
 
     public AccountService getAccountService() {
@@ -48,7 +41,6 @@ public class MyShiroRealm extends AuthorizingRealm {
             List<String> pers;
             pers = accountService.getPermissionsByUserName(username);
             if (pers != null && !pers.isEmpty()) {
-
                 Set<String> roles=new HashSet<>();
                 roles.add("user");
                 for (String each : pers) {
@@ -58,6 +50,7 @@ public class MyShiroRealm extends AuthorizingRealm {
             }
         }
         return null;
+
     }
     /***
      * 获取认证信息
@@ -71,16 +64,13 @@ public class MyShiroRealm extends AuthorizingRealm {
             User user = accountService.getUserByUserName(username);
             if (user != null) {
 //            盐值加密
-            ByteSource credentialsSalt =ByteSource.Util.bytes(username);
+                ByteSource credentialsSalt =ByteSource.Util.bytes(username);
 //            MD5盐值加密
-            Object  password=new SimpleHash("MD5",user.getPassword(),credentialsSalt,1024);
+                Object  password=new SimpleHash("SHA1",user.getPassword(),credentialsSalt,1024);
 
                 return new SimpleAuthenticationInfo(user.getUsername(),password,credentialsSalt, getName());
             }
         }
-
         return null;
     }
-
-
 }
